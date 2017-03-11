@@ -47,7 +47,7 @@ socket.on('connect', function(data) {
         chart.append("g")
             .attr("class", "axis axis--x")
             .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x))
+            .call(d3.axisBottom(x));
 
         chart.append("g")
             .attr("class", "axis axis--y")
