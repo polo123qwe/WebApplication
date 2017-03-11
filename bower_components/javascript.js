@@ -7,8 +7,8 @@ socket.on('connect', function(data) {
             bottom: 70,
             left: 40
         },
-        width = 600 - margin.left - margin.right,
-        height = 300 - margin.top - margin.bottom;
+        width = 700 - margin.left - margin.right,
+        height = 350 - margin.top - margin.bottom;
 
 
     var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
@@ -35,6 +35,8 @@ socket.on('connect', function(data) {
 
     function update(jsonObj) {
 
+        d3.selectAll('svg > g > *').remove();
+
         x.domain(jsonObj.map(function(d) {
             return d._id;
         }));
@@ -45,17 +47,17 @@ socket.on('connect', function(data) {
         chart.append("g")
             .attr("class", "axis axis--x")
             .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x));
+            .call(d3.axisBottom(x))
 
         chart.append("g")
             .attr("class", "axis axis--y")
-            .call(d3.axisLeft(y).ticks(10, "%"))
+            .call(d3.axisLeft(y).ticks(10))
             .append("text")
             .attr("transform", "rotate(-90)")
             .attr("y", 6)
             .attr("dy", "0.71em")
             .attr("text-anchor", "end")
-            .text("Frequency");
+            .text("Messages");
 
 
         chart.selectAll(".bar").remove();

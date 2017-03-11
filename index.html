@@ -8,18 +8,20 @@
 
 <body>
     <div id="future"></div>
-    <!--<svg width="960" height="500"></svg>-->
-    <form id="form" id="chat_form">
-        <input id="guild_id" type="text">
-        <input id="author_id" type="text">
-        <input type="submit" value="Send">
-    </form>
-    <svg class="chart"></svg>
 
-    <script src="/jquery/dist/jquery.js"></script>
+    <div class="wrapper">
+      <div class="chartwrapper">
+      <svg class="chart"></svg>
+        <form id="form" id="chart_input_form">
+            <input id="guild_id" type="text" placeholder="Guild_id">
+            <input id="author_id" type="text" placeholder="User_id">
+            <input id ="send" type="submit" value="Send">
+        </form>
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="/javascript.js"></script>
 </body>
-
 </html>
