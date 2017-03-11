@@ -1,69 +1,93 @@
-body{
-  background: #DD5E89; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #DD5E89 , #F7BB97); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #DD5E89 , #F7BB97); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+body {
+    background: #DD5E89;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #DD5E89, #F7BB97);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #DD5E89, #F7BB97);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.wrapper{
-  padding:25px;
-  width:40%;
-  height:20%;
-  max-height:25%;
-  max-width:60%;
-  background-color: rgba(255, 255, 255, 0.4);
-  border-radius:4px;
-  margin:0 auto;
-  margin-top:8%;
-  overflow:auto;
+.wrapper {
+    padding: 25px;
+    width: 40%;
+    height: 20%;
+    max-height: 25%;
+    max-width: 60%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 8%;
+    overflow: auto;
 }
 
-.chartwrapper{
-  margin:0 auto;
+.chartwrapper {
+    margin: 0 auto;
 }
 
-#guild_id, #author_id{
-  background-color: rgba(255, 255, 255, 0.2);
-  padding:9px 15px 9px 15px;
-  border:1px solid transparent;
-  color:#DD5E89;
-  -webkit-border-radius: 4px; /* Firefox 1-3.6 */
-  -moz-border-radius: 4px; /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
-  border-radius: 4px;
+#guild_id, #author_id {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 9px 15px 9px 15px;
+    border: 1px solid transparent;
+    color: #DD5E89;
+    -webkit-border-radius: 4px;
+    /* Firefox 1-3.6 */
+    -moz-border-radius: 4px;
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    border-radius: 4px;
 }
 
-#guild_id:focus, #author_id:focus{
-  border:1px solid #DD5E89;
+#guild_id:focus, #author_id:focus {
+    border: 1px solid #DD5E89;
 }
 
-#send{
-  background-color:#DD5E89;
-  padding:8px 17px 8px 17px;
-  border:none;
-  color:#fff;
-  -webkit-border-radius: 4px; /* Firefox 1-3.6 */
-  -moz-border-radius: 4px; /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
-  border-radius: 4px;
-  margin-left:10px;
-  }
+#send {
+    background-color: #DD5E89;
+    padding: 8px 17px 8px 17px;
+    border: none;
+    color: #fff;
+    -webkit-border-radius: 4px;
+    /* Firefox 1-3.6 */
+    -moz-border-radius: 4px;
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    border-radius: 4px;
+    margin-left: 10px;
+}
 
 .chart rect {
-  fill: purple;
-  opacity: 0.4;
+    fill: purple;
+    opacity: 0.4;
 }
 
 .chart text {
-  text-anchor: end;
-  fill:#000;
+    text-anchor: end;
+    fill: #000;
 }
 
 .axis text {
-  font: 14px sans-serif;
-  fill:#444; /* Axis text color */
+    font: 14px sans-serif;
+    fill: #444;
+    /* Axis text color */
 }
 
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #444; /* Axis line color */
-  shape-rendering: crispEdges;
+.axis path, .axis line {
+    fill: none;
+    stroke: #444;
+    /* Axis line color */
+    shape-rendering: crispEdges;
+}
+
+.mdl-layout__header {
+    min-height: 0;
+}
+
+.mdl-layout__tab-bar {
+    padding: 0;
+}
+
+.mdl-layout__tab-bar-left-button {
+    display: none;
+}
+
+.mdl-layout__tab, .mdl-layout__tab-bar, .mdl-layout__tab-bar-button, .mdl-layout__header {
+    background-color: #622222;
 }

@@ -26,7 +26,7 @@ socket.on('connect', function(data) {
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform", "translate(" + margin.left * 1.5 + "," + margin.top + ")")
 
     socket.on('update', function(data) {
         console.log(data);
