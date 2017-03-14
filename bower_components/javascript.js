@@ -7,9 +7,9 @@ socket.on('connect', function(data) {
             bottom: 70,
             left: 40
         },
-        width = 700 - margin.left - margin.right,
-        height = 350 - margin.top - margin.bottom;
 
+        width = $(".chartwrapper").width() - margin.left - margin.right,
+        height = $(".chartwrapper").outerHeight(true) - margin.top - margin.bottom;
 
     var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
         y = d3.scaleLinear().rangeRound([height, 0]);
@@ -59,9 +59,6 @@ socket.on('connect', function(data) {
             .attr("text-anchor", "end")
             .text("Messages");
 
-
-        chart.selectAll(".bar").remove();
-
         chart.selectAll(".bar")
             .data(jsonObj)
             .enter().append("rect")
@@ -79,7 +76,6 @@ socket.on('connect', function(data) {
 
     }
 
-    //socket.emit('join', svg);
 });
 
 socket.on('broad', function(data) {

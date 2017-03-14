@@ -1,78 +1,76 @@
+/* General styles */
+
 body {
-    background: #DD5E89;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #DD5E89, #F7BB97);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #DD5E89, #F7BB97);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #222326;
+    color: #89909B;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
 }
 
 .wrapper {
-    padding: 25px;
-    width: 40%;
-    height: 20%;
-    max-height: 25%;
-    max-width: 60%;
-    background-color: rgba(255, 255, 255, 0.4);
+    padding: 12px 25px 12px 25px;
+    height: 45%;
+    background-color: #2E2F34;
+    width: 95%;
     border-radius: 4px;
-    margin: 0 auto;
+    /* Firefox 1-3.6 */
+    -webkit-border-radius: 4px;
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    -moz-border-radius: 4px;
     margin-top: 8%;
-    overflow: auto;
+    margin: 0 auto;
+}
+
+.outerwrapper {
+    width: 1880px;
+    height: 1060px;
+    padding: 10px 20px 20px 10px;
 }
 
 .chartwrapper {
+    background-color: #2E2F34;
+    margin: 0 auto;
+    margin-left: 10%;
+    display: inline-block;
+    float: left;
+    height: 100%;
+    width: 45%;
+}
+
+.chartwrapper:first-of-type {
     margin: 0 auto;
 }
 
 #guild_id, #author_id {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 9px 15px 9px 15px;
-    border: 1px solid transparent;
-    color: #DD5E89;
-    -webkit-border-radius: 4px;
-    /* Firefox 1-3.6 */
-    -moz-border-radius: 4px;
-    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
-    border-radius: 4px;
-}
-
-#guild_id:focus, #author_id:focus {
-    border: 1px solid #DD5E89;
-}
-
-#send {
-    background-color: #DD5E89;
-    padding: 8px 17px 8px 17px;
+    color: #89909B;
+    margin: 21px;
+    background-color: #333539;
+    padding: 7px 15px 7px 15px;
     border: none;
-    color: #fff;
-    -webkit-border-radius: 4px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
     /* Firefox 1-3.6 */
-    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
     /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    -moz-border-radius: 4px;
     border-radius: 4px;
-    margin-left: 10px;
 }
 
-.chart rect {
-    fill: purple;
-    opacity: 0.4;
-}
-
-.chart text {
-    text-anchor: end;
-    fill: #000;
+.chart {
+    padding: 5px;
 }
 
 .axis text {
-    font: 14px sans-serif;
-    fill: #444;
     /* Axis text color */
+    font-size: 14px;
+    fill: #89909B;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 .axis path, .axis line {
-    fill: none;
-    stroke: #444;
     /* Axis line color */
+    fill: none;
+    stroke: transparent;
     shape-rendering: crispEdges;
 }
 
@@ -89,5 +87,77 @@ body {
 }
 
 .mdl-layout__tab, .mdl-layout__tab-bar, .mdl-layout__tab-bar-button, .mdl-layout__header {
-    background-color: #622222;
+    background-color: #2E3136;
 }
+
+
+/* General styles end */
+
+
+/* First tab styles (red-ish) */
+
+#scroll-tab-1 ::-moz-selection {
+    /* Code for Firefox */
+    color: #E65555;
+    background: #2E2F34;
+}
+
+#scroll-tab-1 ::selection {
+    color: #E65555;
+    background: #2E2F34;
+}
+
+#scroll-tab-1 .mdl-button--accent.mdl-button--accent.mdl-button--raised {
+    background: #FD3C3D;
+}
+
+#scroll-tab-1 .mdl-typography--display-4 {
+    /* mdl h1 */
+    margin-top: 50px;
+    margin-left: 15px;
+    color: #FD3C3D;
+}
+
+#scroll-tab-1 .chart rect {
+    /*fill: #E65555;*/
+    fill: url(#tab1Gradient);
+}
+
+.mdl-layout.is-upgraded .mdl-layout__tab.is-active::after {
+    /*background: #DC1773;*/
+}
+
+
+/* First tab styles end */
+
+
+/* Second tab styles (cyan-ish) */
+
+#scroll-tab-2 ::-moz-selection {
+    /* Code for Firefox */
+    color: #8ED5D5;
+    background: #2E2F34;
+}
+
+#scroll-tab-2 ::selection {
+    color: #8ED5D5;
+    background: #2E2F34;
+}
+
+#scroll-tab-2 .mdl-typography--display-4 {
+    /* mdl h1 */
+    margin-top: 50px;
+    margin-left: 15px;
+    color: #6ECBCB;
+}
+
+
+/* Second tab styles end */
+
+
+/*
+Maybe considering...
+#6ECBCB
+#249898
+#484BAD
+*/
