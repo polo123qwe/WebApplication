@@ -1,4 +1,6 @@
 var socket = io.connect('http://localhost:3002');
+var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
 socket.on('connect', function(data) {
 
     var margin = {
@@ -29,7 +31,7 @@ socket.on('connect', function(data) {
         .attr("transform", "translate(" + margin.left * 1.5 + "," + margin.top + ")")
 
     socket.on('update', function(data) {
-        console.log(data);
+        // console.log(data);
         update(data);
     })
 
@@ -38,7 +40,8 @@ socket.on('connect', function(data) {
         d3.selectAll('svg > g > *').remove();
 
         x.domain(jsonObj.map(function(d) {
-            return d._id;
+            console.log(d);
+            return weekdays[d._id-1];
         }));
         y.domain([0, d3.max(jsonObj, function(d) {
             return d.msgs;
@@ -64,7 +67,7 @@ socket.on('connect', function(data) {
             .enter().append("rect")
             .attr("class", "bar")
             .attr("x", function(d) {
-                return x(d._id);
+                return x(weekdays[d._id-1]);
             })
             .attr("y", function(d) {
                 return y(d.msgs);
