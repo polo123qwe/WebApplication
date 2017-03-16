@@ -6,6 +6,8 @@ var io = require('socket.io')(server);
 var d3 = require('d3');
 var Connection = require('./bin/dbConnection');
 
+var clientAmount = 0;
+
 app.use(express.static(__dirname + '/bower_components'));
 app.get('/', function(req, res, next) {
     res.sendFile(__dirname + '/index.html');
@@ -25,7 +27,8 @@ server.listen(3002, function() {
 });
 
 io.on('connection', function(client) {
-    console.log('Client connected...');
+    clientAmount++;
+    console.log(`Client connected... (${clientAmount})`);
 
     client.on('join', function(data) {
 
@@ -45,9 +48,19 @@ io.on('connection', function(client) {
 
     client.on('formupdate', function(formData) {
         updateGraph(formData.guild_id, formData.author_id).then(data => {
-            client.emit('update', data);
+            if(data.length == 0){
+                formData.error = "No data found!";
+                client.emit('err', formData);
+            } else {
+                client.emit('update', data);
+            }
         }).catch(console.log);
-    })
+    });
+
+    client.on('disconnect', function(client) {
+        console.log('Client disconnected');
+        clientAmount++;
+    });
 
 });
 
@@ -59,6 +72,8 @@ function updateGraph(guild_id, author_id) {
         });
     });
 }
+
+
 
 function fetchUserActivity(guild_id, user_id, time, callback) {
 

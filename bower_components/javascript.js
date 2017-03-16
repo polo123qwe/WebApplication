@@ -35,6 +35,12 @@ socket.on('connect', function(data) {
         update(data);
     })
 
+    //When update fails, we recieve an err event to notify the client
+    socket.on('err', function(error) {
+        console.log(error);
+        alert(error.error);
+    });
+
     function update(jsonObj) {
 
         d3.selectAll('svg > g > *').remove();
@@ -84,6 +90,7 @@ socket.on('connect', function(data) {
 socket.on('broad', function(data) {
     $('#future').html(data);
 });
+
 
 $('form').submit(function(e) {
     e.preventDefault();
