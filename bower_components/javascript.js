@@ -77,7 +77,7 @@ socket.on('connect', function(data) {
             .enter().append("rect")
             .attr("class", "bar")
             .attr("x", function(d) {
-                return x(weekdays[d._id - 1]);
+                return x(actualWeekdays[d._id - 1]);
             })
             .attr("y", function(d) {
                 return y(d.msgs);
