@@ -2,7 +2,7 @@ TODO
 --------
 
 User Tab:
-> Weekly messages (last bar should be the current day)
+> Weekly messages (last bar should be the current day) ~~~ DONE
 > Monthly messages
 
 Guild Tab:

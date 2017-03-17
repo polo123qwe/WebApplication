@@ -59,7 +59,7 @@ io.on('connection', function(client) {
 
     client.on('disconnect', function(client) {
         console.log('Client disconnected');
-        clientAmount++;
+        clientAmount--;
     });
 
 });

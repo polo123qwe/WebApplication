@@ -1,5 +1,7 @@
 var socket = io.connect('http://localhost:3002');
 var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var d;
+var actualWeekdays = JSON.parse(JSON.stringify(weekdays))
 
 socket.on('connect', function(data) {
 
@@ -45,9 +47,11 @@ socket.on('connect', function(data) {
 
         d3.selectAll('svg > g > *').remove();
 
+        d = new Date();
+        actualWeekdays = sortWeekdays(weekdays[d.getDay()], actualWeekdays); // in case the server is running for several days
+
         x.domain(jsonObj.map(function(d) {
-            console.log(d);
-            return weekdays[d._id-1];
+            return actualWeekdays[d._id - 1];
         }));
         y.domain([0, d3.max(jsonObj, function(d) {
             return d.msgs;
@@ -73,7 +77,7 @@ socket.on('connect', function(data) {
             .enter().append("rect")
             .attr("class", "bar")
             .attr("x", function(d) {
-                return x(weekdays[d._id-1]);
+                return x(weekdays[d._id - 1]);
             })
             .attr("y", function(d) {
                 return y(d.msgs);
@@ -99,3 +103,10 @@ $('form').submit(function(e) {
     formData.author_id = $('#author_id').val();
     socket.emit('formupdate', formData);
 });
+
+function sortWeekdays(limit, array) {
+    while (array[array.length - 1] != limit) {
+        array = array.concat(array.splice(0, 2));
+    }
+    return array;
+}
