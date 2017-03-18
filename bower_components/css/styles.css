@@ -117,7 +117,7 @@ body {
     border-radius: 4px;
 }
 
-.chart {
+.chart, .monthlychart {
     padding: 5px;
 }
 
@@ -182,7 +182,7 @@ body {
     text-align: center;
 }
 
-#scroll-tab-1 .chart rect {
+#scroll-tab-1 .chart rect, #scroll-tab-1 .monthlychart rect {
     /*fill: #E65555;*/
     fill: url(#tab1Gradient);
 }

@@ -48,7 +48,7 @@ io.on('connection', function(client) {
 
     client.on('formupdate', function(formData) {
         updateGraph(formData.guild_id, formData.author_id).then(data => {
-            if(data.length == 0){
+            if (data.length == 0) {
                 formData.error = "No data found!";
                 client.emit('err', formData);
             } else {
@@ -65,17 +65,23 @@ io.on('connection', function(client) {
 });
 
 function updateGraph(guild_id, author_id) {
+    var response = [];
     return new Promise(function(resolve, reject) {
-        fetchUserActivity(guild_id, author_id, 7, (err, res) => {
+        fetchUserActivity(guild_id, author_id, 7, false, (err, res) => {
             if (err) return reject(err);
-            resolve(res);
+            response[0] = res;
+        });
+        fetchUserActivity(guild_id, author_id, 30, true, (err, res) => {
+            if (err) return reject(err);
+            response[1] = res;
+            resolve(response);
         });
     });
 }
 
 
 
-function fetchUserActivity(guild_id, user_id, time, callback) {
+function fetchUserActivity(guild_id, user_id, time, monthSoFar, callback) {
 
     var db = Connection.getDB();
     if (!db) return callback("Not connected to DB!");
@@ -89,6 +95,11 @@ function fetchUserActivity(guild_id, user_id, time, callback) {
         grouping['$dayOfWeek'] = "$timestamp";
         match.timestamp = {
             "$gte": new Date(Date.now() - 24 * 7 * 3600000)
+        };
+    } else if (monthSoFar) {
+        grouping['$dayOfMonth'] = "$timestamp";
+        match.timestamp = {
+            "$gte": new Date(Date.now() - 24 * new Date().getDate() * 3600000)
         };
     } else {
         grouping['$dayOfMonth'] = "$timestamp";

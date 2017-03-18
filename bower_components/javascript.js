@@ -32,8 +32,14 @@ socket.on('connect', function(data) {
         .append("g")
         .attr("transform", "translate(" + margin.left * 1.5 + "," + margin.top + ")")
 
+    var monthlychart = d3.select(".monthlychart")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left * 1.5 + "," + margin.top + ")")
+
     socket.on('update', function(data) {
-        // console.log(data);
+        console.log(data);
         update(data);
     })
 
@@ -50,10 +56,11 @@ socket.on('connect', function(data) {
         d = new Date();
         actualWeekdays = sortWeekdays(weekdays[d.getDay()], actualWeekdays); // in case the server is running for several days
 
-        x.domain(jsonObj.map(function(d) {
+        x.domain(jsonObj[0].map(function(d) {
             return actualWeekdays[d._id - 1];
         }));
-        y.domain([0, d3.max(jsonObj, function(d) {
+
+        y.domain([0, d3.max(jsonObj[0], function(d) {
             return d.msgs;
         })]);
 
@@ -73,11 +80,52 @@ socket.on('connect', function(data) {
             .text("Messages");
 
         chart.selectAll(".bar")
-            .data(jsonObj)
+            .data(jsonObj[0])
             .enter().append("rect")
             .attr("class", "bar")
             .attr("x", function(d) {
-                return x(actualWeekdays[d._id - 1]);
+                return x(weekdays[d._id - 1]);
+            })
+            .attr("y", function(d) {
+                return y(d.msgs);
+            })
+            .attr("width", x.bandwidth())
+            .attr("height", function(d) {
+                return height - y(d.msgs);
+            });
+
+        // End of last week chart
+
+        x.domain(jsonObj[1].map(function(d) {
+            return d._id;
+        }));
+
+        y.domain([0, d3.max(jsonObj[1], function(d) {
+            return d.msgs;
+        })]);
+
+
+        monthlychart.append("g")
+            .attr("class", "axis axis--x")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
+
+        monthlychart.append("g")
+            .attr("class", "axis axis--y")
+            .call(d3.axisLeft(y).ticks(10))
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", "0.71em")
+            .attr("text-anchor", "end")
+            .text("Messages");
+
+        monthlychart.selectAll(".bar")
+            .data(jsonObj[1])
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) {
+                return x(d._id);
             })
             .attr("y", function(d) {
                 return y(d.msgs);
