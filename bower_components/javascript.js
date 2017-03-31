@@ -12,8 +12,8 @@ socket.on('connect', function(data) {
             left: 40
         },
 
-        width = $(".chartwrapper").width() - margin.left - margin.right,
-        height = $(".chartwrapper").outerHeight(true) - margin.top - margin.bottom;
+        width = $(".graphs").width() - margin.left - margin.right,
+        height = ($(".graphs").outerHeight(true))/2 - margin.top - margin.bottom;
 
     var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
         y = d3.scaleLinear().rangeRound([height, 0]);
@@ -30,13 +30,13 @@ socket.on('connect', function(data) {
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", "translate(" + margin.left * 1.5 + "," + margin.top + ")")
+        .attr("transform", "translate(" + margin.left  + "," + margin.top + ")")
 
     var monthlychart = d3.select(".monthlychart")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", "translate(" + margin.left * 1.5 + "," + margin.top + ")")
+        .attr("transform", "translate(" + margin.left  + "," + margin.top + ")")
 
     socket.on('update', function(data) {
         console.log(data);
