@@ -16,8 +16,8 @@
     /*fill: url(#tab1Gradient);*/
 }
 
-.chart rect:nth-child(2n),.monthlychart rect:nth-child(2n) {
-  fill: #5BD0E1;
+.chart rect:nth-child(2n), .monthlychart rect:nth-child(2n) {
+    fill: #5BD0E1;
 }
 
 .chart, .monthlychart {
@@ -38,26 +38,29 @@
     shape-rendering: crispEdges;
 }
 
-
 html, body {
-  background-color: #222326;
-  color: #89909B;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 15px;
+    background-color: #222326;
+    color: #89909B;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
 }
 
-.mdl-layout__drawer, .mdl-layout__header{
-  background-color: #2E2F34;
-  color:#89909B;
+.mdl-layout__drawer, .mdl-layout__header {
+    background-color: #2E2F34;
+    color: #89909B;
 }
+
 
 /* 4 charts thingie styles */
-.charts,.graphs{
-  background-color:#2E2F34;
+
+.charts, .graphs {
+    background-color: #2E2F34;
 }
-.mdl-card__title{
-  background-color: #6ECBCB;
+
+.mdl-card__title {
+    background-color: #6ECBCB;
 }
+
 .layout .mdl-layout__header .mdl-layout__drawer-button {
     color: rgba(0, 0, 0, 0.54);
 }
@@ -110,8 +113,7 @@ html, body {
 }
 
 .layout .navigation .mdl-navigation__link:hover {
-    background-color: #00BCD4;
-    color: #37474F;
+    background-color: #222;
 }
 
 .navigation .mdl-navigation__link .material-icons {
@@ -130,22 +132,6 @@ html, body {
     align-items: center;
 }
 
-.upperchart:nth-child(1) {
-    color: #ACEC00;
-}
-
-.upperchart:nth-child(2) {
-    color: #00BBD6;
-}
-
-.upperchart:nth-child(3) {
-    color: #BA65C9;
-}
-
-.upperchart:nth-child(4) {
-    color: #EF3C79;
-}
-
 .graphs {
     padding: 16px 32px;
     display: -webkit-flex;
@@ -158,23 +144,6 @@ html, body {
     -ms-flex-align: stretch;
     align-items: stretch;
 }
-
-
-/* TODO: Find a proper solution to have the graphs
- * not float around outside their container in IE10/11.
- * Using a browserhacks.com solution for now.
- */
-
-_:-ms-input-placeholder, :root .graphs {
-    min-height: 664px;
-}
-
-_:-ms-input-placeholder, :root .graph {
-    max-height: 300px;
-}
-
-
-/* TODO end */
 
 .graph:nth-child(1) {
     color: #00b9d8;
